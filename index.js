@@ -6,7 +6,7 @@ app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(express.urlencoded({extended: false}))
 app.use('/dinosaurs', require('./controllers/dinosaurs'))
-// app.use('/creatures', require('./controllers/creatures'))
+app.use('/creatures', require('./controllers/prehistoric_creatures'))
 
 
 
