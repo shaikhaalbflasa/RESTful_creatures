@@ -1,0 +1,9 @@
+<ul>
+    <% myDinos.forEach((dino,idex) => { %>
+   <a href="/dinosaurs/<%= idex%>">
+
+    <li><%= dino.name %> is a <%= dino.type %></li>
+    
+    </a> 
+    <% }); %>
+</ul>
