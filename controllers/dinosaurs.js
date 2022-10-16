@@ -3,13 +3,13 @@ const router = express.Router()
 const fs = require('fs')
 
 router.get('/',(req, res) => {
-    let dinosaurs = fs.readFileSync('./dinosaurs.json')
-    let dinoData = JSON.parse(dinosaurs)
-    res.render('dinosaurs/index', {myDinos: dinoData})
+  let dinosaurs = fs.readFileSync('./dinosaurs.json')
+  let dinoData = JSON.parse(dinosaurs)
+  res.render('dinosaurs/index', {myDinos: dinoData})
 })
 
 router.get('/new', (req, res) => {
-    res.render('dinosaurs/new')
+  res.render('dinosaurs/new')
 })
 
 router.get('/:idx', (req, res) => {
@@ -23,8 +23,19 @@ router.get('/:idx', (req, res) => {
 })
 
 router.post('/',(req, res) => {
-    console.log('This is the Request Body: ',req.body)
-    res.redirect('/dinosaurs')
+    // read dinosaurs file
+    let dinosaurs = fs.readFileSync('./dinosaurs.json');
+  let dinoData = JSON.parse(dinosaurs);
+
+  // add item to dinosaurs array
+  dinoData.push(req.body);
+
+  // save dinosaurs to the data.json file
+  fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData));
+
+  //redirect to the GET /dinosaurs route (index)
+  res.redirect('/dinosaurs');
+    
 })
 
 
