@@ -1,8 +1,9 @@
+<h2>Prehistoric Creatures</h2>
 <ul>
     <% myCreatures.forEach((creatures , idx) => { %>
         <a href="/prehistoric_creatures/ <%= idx%>">
             <li> <%= creatures.type %></li>
-            
+            <a href="/prehistoric_creatures/edit/<%= idx %>">Edit</a>
             <form method="POST" action="/prehistoric_creatures/<%= idx %>/?_method=DELETE">
                 <input type="submit" value="Delete creatures">
             </form>

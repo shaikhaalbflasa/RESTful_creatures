@@ -57,7 +57,37 @@ router.delete('/:idx', (req, res) => {
     fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creaturesData))
    
     res.redirect('/prehistoric_creatures')
- })
+})
    
+router.get('/edit/:idx' ,(req, res) =>{
+    //grab data creatures
+    let creatures = fs.readFileSync('./prehistoric_creatures.json')
+    let creaturesData = JSON.parse(creatures)
+   
+    //disply edit page
+    res.render('prehistoric_creatures/edit', {
+    myCreatures: creaturesData[req.params.idx], 
+    creaturesId: req.params.idx
+    })
+   
+})
+   
+   
+   
+router.put('/:idx', (req, res) => {
+ //grab data dino vvv
+ let creatures = fs.readFileSync('./prehistoric_creatures.json')
+  //parse JSON data into JS object vv
+  let creaturesData = JSON.parse(creatures)
+   
+    //update our din with form data
+    creaturesData[req.params.idx].name = req.body.type
+    creatures[req.params.idx].type = req.body.img_url
+   
+    //update pur json file with new date
+    fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creaturesData))
+   //redirect to home page
+    res.redirect('/prehistoric_creatures');
+})
 
 module.exports = router
