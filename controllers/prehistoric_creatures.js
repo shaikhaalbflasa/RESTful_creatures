@@ -45,4 +45,19 @@ router.post('/', (req, res) => {
     //redirect to the GET /creatures route (index)
     res.redirect('/prehistoric_creatures')
 })
+
+router.delete('/:idx', (req, res) => {
+    console.log('This is the req.params object!', req.params)
+   
+    let creatures = fs.readFileSync('./prehistoric_creatures.json')
+    let creaturesData = JSON.parse(creatures)
+   
+    creaturesData.splice(req.params.idx, 1)
+     
+    fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creaturesData))
+   
+    res.redirect('/prehistoric_creatures')
+ })
+   
+
 module.exports = router

@@ -1,7 +1,12 @@
 <ul>
-    <% myCreatures.forEach((creatures , idex) => { %>
-        <a href="/prehistoric_creatures/ <%= idex%>">
+    <% myCreatures.forEach((creatures , idx) => { %>
+        <a href="/prehistoric_creatures/ <%= idx%>">
             <li> <%= creatures.type %></li>
-            <% }); %>
+            
+            <form method="POST" action="/prehistoric_creatures/<%= idx %>/?_method=DELETE">
+                <input type="submit" value="Delete creatures">
+            </form>
+           
         </a>
+        <% }); %>
 </ul>
