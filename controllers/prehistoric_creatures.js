@@ -43,6 +43,6 @@ router.post('/', (req, res) => {
     fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creaturesData))
   
     //redirect to the GET /creatures route (index)
-    res.redirect('/creatures')
+    res.redirect('/prehistoric_creatures')
 })
 module.exports = router

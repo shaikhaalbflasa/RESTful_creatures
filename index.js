@@ -13,15 +13,16 @@ app.use(ejsLayouts)
 app.use(express.urlencoded({extended: false}))
 
 //controllers
-app.use('/dinosaurs', require('./controllers/dinosaurs'))
-app.use('/creatures', require('./controllers/prehistoric_creatures'))
 app.use('/home', require('./controllers/home'))
+app.use('/dinosaurs', require('./controllers/dinosaurs'))
+app.use('/prehistoric_creatures', require('./controllers/prehistoric_creatures'))
 
 
 //HOME route
-app.get('/', (req, res) => {
+app.get('/',(req,res)=>{
     res.redirect('/home')
 })
+
 
 //indicate a port to run the server on
 app.listen(PORT,()=>{
