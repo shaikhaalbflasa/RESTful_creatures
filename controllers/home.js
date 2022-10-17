@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-// lists all creatures
-router.get('/', (req, res) => {
-    res.redirect('home')
+// displays all creatures
+router.get('/',(req,res)=>{
+    res.render('home')
+    
 })
+
 
 module.exports = router
