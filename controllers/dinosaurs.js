@@ -22,7 +22,7 @@ router.get('/:idx', (req, res) => {
     // get dinosaurs
   let dinosaurs = fs.readFileSync('./dinosaurs.json')
   let dinoData = JSON.parse(dinosaurs)
-  // console.log('This is the req.params object!', req.params)
+  console.log('This is the req.params object!', req.params)
   let dinoIndex = parseInt(req.params.idx)
   res.render('dinosaurs/show', {myDino: dinoData[dinoIndex]})
 
