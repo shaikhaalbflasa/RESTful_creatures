@@ -6,10 +6,21 @@ const router = express.Router()
 const fs = require('fs')
 
 router.get('/',(req, res) => {
+  //pull in Json DATA
   let dinosaurs = fs.readFileSync('./dinosaurs.json')
   // console.log(dinosaurs)
+  //turns json date into a js object
   let dinoData = JSON.parse(dinosaurs)
   // console.log(dinoData)
+  
+  let nameFilter =req.query.nameFilter
+  
+  //if the use searched for somthing 
+  if (nameFilter){
+    dinoData = dinoData.filter(dino=>{
+     return dino.name.toLowerCase()===nameFilter.toLowerCase()
+    }
+  )}
   res.render('dinosaurs/index', {myDinos: dinoData})
 })
 
